@@ -19,14 +19,9 @@ class MySQLDriver implements DriverInterface
 
     /**
      * @param EntityManagerInterface $dm
-     * @param ValidatorInterface $validator
      */
-    public function __construct(
-        EntityManagerInterface $em,
-        ValidatorInterface $validator
-    ) {
+    public function __construct(EntityManagerInterface $em) {
         $this->em = $em;
-        $this->validator = $validator;
     }
 
     /**

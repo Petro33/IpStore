@@ -16,3 +16,4 @@ services:
 
   IpStoreBundle\Service\:
     resource: '../../Service/*'
+    public: true
