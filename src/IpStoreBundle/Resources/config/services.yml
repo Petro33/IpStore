@@ -1,0 +1,18 @@
+services:
+  _defaults:
+    # automatically injects dependencies in your services
+    autowire: true
+    # automatically registers your services as commands, event subscribers, etc.
+    autoconfigure: false
+    # this means you cannot fetch services directly from the container via $container->get()
+    # if you need to do this, you can override this setting on individual services
+    public: false
+
+  IpStoreBundle\Controller\:
+    resource: '../../Controller'
+    public: false # if has __construct - then true
+    tags:
+    - { name: controller.service_arguments }
+
+  IpStoreBundle\Service\:
+    resource: '../../Service/*'

@@ -1,0 +1,8 @@
+ip_store:
+    resource: "@IpStoreBundle/Resources/config/routing.yml"
+    prefix:   /ip-store
+
+
+#app:
+#    resource: '@AppBundle/Controller/'
+#    type: annotation

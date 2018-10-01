@@ -1,0 +1,11 @@
+ip_store_homepage:
+    path:     /
+    defaults: { _controller: IpStoreBundle:IpStore:index }
+
+ip_store_add:
+    path:     /add
+    defaults: { _controller: IpStoreBundle:IpStore:add }
+
+ip_store_query:
+    path:     /query
+    defaults: { _controller: IpStoreBundle:IpStore:query }
