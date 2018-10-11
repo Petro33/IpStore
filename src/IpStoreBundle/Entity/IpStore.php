@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="ip_store")
+ * @ORM\Table(name="ip_store", indexes={@ORM\Index(name="ip_idx", columns={"ip"})})
  */
 class IpStore
 {
