@@ -1,10 +1,11 @@
 
 Add IP addresses (IPv4 and IPv6)
-<br>
-<form action="{{ path('ip_store_add') }}" method="post">
-    <input type="text" value="{{ ip }}" name="ip">
-    <input type="submit" value="add">
-</form>
+
+{{ form_start(form) }}
+    {{ form_widget(form.ip) }}
+    {{ form_widget(form.add) }}
+{{ form_end(form) }}
+
 {% if errors is not null %}
     {{ errors }}
 {% endif %}

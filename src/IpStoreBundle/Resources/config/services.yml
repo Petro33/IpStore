@@ -17,3 +17,8 @@ services:
   IpStoreBundle\Service\:
     resource: '../../Service/*'
     public: true
+
+  IpStoreBundle\Form\:
+    resource: '../../Form/'
+    tags:
+    - { name: form.type }

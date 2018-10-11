@@ -2,6 +2,7 @@
 
 namespace IpStoreBundle\Controller;
 
+use IpStoreBundle\Form\AddForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use IpStoreBundle\Service\MySQLDriver;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,15 +22,24 @@ class IpStoreController extends Controller
      */
     public function addAction(Request $request, MySQLDriver $mySQLDriver)
     {
-        $ip = $request->request->get('ip');
+        $form = $this->createForm(
+            AddForm::class,
+            null,
+            [
+                'action' => $this->generateUrl('ip_store_add'),
+            ]
+        );
+        $form->handleRequest($request);
 
-        if($ip) {
+        if($form->isSubmitted()) {
+            $ip = $form->get('ip')->getData();
+
             $errors = $mySQLDriver->validation($ip);
             $ipCount = $errors ? null : $mySQLDriver->add($ip);
         }
 
         return $this->render('@IpStore/IpStore/add.html.twig', [
-            'ip' => $ip,
+            'form' => $form->createView(),
             'ipCount' => $ipCount ?? null,
             'errors' => $errors ?? null,
         ]);
@@ -42,15 +52,24 @@ class IpStoreController extends Controller
      */
     public function queryAction(Request $request, MySQLDriver $mySQLDriver)
     {
-        $ip = $request->query->get('ip');
+        $form = $this->createForm(
+            AddForm::class,
+            null,
+            [
+                'action' => $this->generateUrl('ip_store_query'),
+            ]
+        );
+        $form->handleRequest($request);
 
-        if($ip) {
+        if($form->isSubmitted()) {
+            $ip = $form->get('ip')->getData();
+
             $errors = $mySQLDriver->validation($ip);
             $ipCount = $errors ? null : $mySQLDriver->query($ip);
         }
 
         return $this->render('@IpStore/IpStore/query.html.twig', [
-            'ip' => $ip,
+            'form' => $form->createView(),
             'ipCount' => $ipCount ?? null,
             'errors' => $errors ?? null,
         ]);
