@@ -14,9 +14,6 @@ class MySQLDriver implements DriverInterface
      */
     protected $em;
 
-    private $validator;
-
-
     /**
      * @param EntityManagerInterface $dm
      */
